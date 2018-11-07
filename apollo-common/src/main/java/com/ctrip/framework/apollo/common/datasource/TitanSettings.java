@@ -31,13 +31,11 @@ public class TitanSettings {
   public String getTitanUrl() {
     Env env = EnvUtils.transformEnv(Foundation.server().getEnvType());
     switch (env) {
-      case FAT:
-      case FWS:
+      case SIT:
         return fatTitanUrl;
-      case UAT:
+      case PRE:
         return uatTitanUrl;
-      case TOOLS:
-      case PRO:
+      case PROD:
         return proTitanUrl;
       default:
         return "";
@@ -47,13 +45,11 @@ public class TitanSettings {
   public String getTitanDbname() {
     Env env = EnvUtils.transformEnv(Foundation.server().getEnvType());
     switch (env) {
-      case FAT:
-      case FWS:
+      case SIT:
         return fatTitanDbname;
-      case UAT:
+      case PRE:
         return uatTitanDbname;
-      case TOOLS:
-      case PRO:
+      case PROD:
         return proTitanDbname;
       default:
         return "";

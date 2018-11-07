@@ -1,9 +1,11 @@
 package com.ctrip.framework.apollo.core.internals;
 
+import com.google.common.base.Strings;
+
 import com.ctrip.framework.apollo.core.enums.Env;
 import com.ctrip.framework.apollo.core.spi.MetaServerProvider;
 import com.ctrip.framework.apollo.core.utils.ResourceUtils;
-import com.google.common.base.Strings;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -27,10 +29,9 @@ public class LegacyMetaServerProvider implements MetaServerProvider {
 
     domains.put(Env.LOCAL, getMetaServerAddress(prop, "local_meta", "local.meta"));
     domains.put(Env.DEV, getMetaServerAddress(prop, "dev_meta", "dev.meta"));
-    domains.put(Env.FAT, getMetaServerAddress(prop, "fat_meta", "fat.meta"));
-    domains.put(Env.UAT, getMetaServerAddress(prop, "uat_meta", "uat.meta"));
-    domains.put(Env.LPT, getMetaServerAddress(prop, "lpt_meta", "lpt.meta"));
-    domains.put(Env.PRO, getMetaServerAddress(prop, "pro_meta", "pro.meta"));
+    domains.put(Env.SIT, getMetaServerAddress(prop, "sit_meta", "sit.meta"));
+    domains.put(Env.PRE, getMetaServerAddress(prop, "pre_meta", "pre.meta"));
+    domains.put(Env.PROD, getMetaServerAddress(prop, "prod_meta", "prod.meta"));
   }
 
   private String getMetaServerAddress(Properties prop, String sourceName, String propName) {

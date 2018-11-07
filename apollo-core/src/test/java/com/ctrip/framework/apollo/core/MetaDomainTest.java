@@ -1,17 +1,21 @@
 package com.ctrip.framework.apollo.core;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import com.google.common.collect.Maps;
 
 import com.ctrip.framework.apollo.BaseIntegrationTest;
 import com.ctrip.framework.apollo.core.enums.Env;
 import com.ctrip.framework.apollo.core.internals.LegacyMetaServerProvider;
 import com.ctrip.framework.apollo.core.spi.MetaServerProvider;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.servlet.http.HttpServletResponse;
+
 import org.junit.After;
 import org.junit.Test;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class MetaDomainTest extends BaseIntegrationTest {
 
@@ -26,7 +30,7 @@ public class MetaDomainTest extends BaseIntegrationTest {
   public void testGetMetaDomain() {
     assertEquals("http://localhost:8080", MetaDomainConsts.getDomain(Env.LOCAL));
     assertEquals("http://dev:8080", MetaDomainConsts.getDomain(Env.DEV));
-    assertEquals(MetaDomainConsts.DEFAULT_META_URL, MetaDomainConsts.getDomain(Env.PRO));
+    assertEquals(MetaDomainConsts.DEFAULT_META_URL, MetaDomainConsts.getDomain(Env.PROD));
   }
 
   @Test
@@ -37,11 +41,11 @@ public class MetaDomainTest extends BaseIntegrationTest {
     String validServer = " http://localhost:" + PORT + " ";
     String invalidServer = "http://localhost:" + findFreePort();
 
-    MockMetaServerProvider.mock(Env.FAT, validServer + "," + invalidServer);
-    MockMetaServerProvider.mock(Env.UAT, invalidServer + "," + validServer);
+    MockMetaServerProvider.mock(Env.PRE, validServer + "," + invalidServer);
+    MockMetaServerProvider.mock(Env.SIT, invalidServer + "," + validServer);
 
-    assertEquals(validServer.trim(), MetaDomainConsts.getDomain(Env.FAT));
-    assertEquals(validServer.trim(), MetaDomainConsts.getDomain(Env.UAT));
+    assertEquals(validServer.trim(), MetaDomainConsts.getDomain(Env.PRE));
+    assertEquals(validServer.trim(), MetaDomainConsts.getDomain(Env.SIT));
   }
 
   @Test
@@ -49,9 +53,9 @@ public class MetaDomainTest extends BaseIntegrationTest {
     String invalidServer = "http://localhost:" + findFreePort() + " ";
     String anotherInvalidServer = "http://localhost:" + findFreePort() + " ";
 
-    MockMetaServerProvider.mock(Env.LPT, invalidServer + "," + anotherInvalidServer);
+    MockMetaServerProvider.mock(Env.SIT, invalidServer + "," + anotherInvalidServer);
 
-    String metaServer = MetaDomainConsts.getDomain(Env.LPT);
+    String metaServer = MetaDomainConsts.getDomain(Env.SIT);
 
     assertTrue(metaServer.equals(invalidServer.trim()) || metaServer.equals(anotherInvalidServer.trim()));
   }
