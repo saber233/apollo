@@ -1,5 +1,6 @@
-![apollo-logo](apollo-portal/src/main/resources/static/img/logo-detail.png)
-================
+<img src="https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/logo/logo-simple.png" alt="apollo-logo" width="60%">
+
+# Apollo - A reliable configuration management system
 
 [![Build Status](https://travis-ci.org/ctripcorp/apollo.svg?branch=master)](https://travis-ci.org/ctripcorp/apollo)
 [![GitHub release](https://img.shields.io/github/release/ctripcorp/apollo.svg)](https://github.com/ctripcorp/apollo/releases)
@@ -23,10 +24,6 @@ Java客户端不依赖任何框架，能够运行于所有Java运行时环境，
 更多产品介绍参见[Apollo配置中心介绍](https://github.com/ctripcorp/apollo/wiki/Apollo%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E4%BB%8B%E7%BB%8D)
 
 本地快速部署请参见[Quick Start](https://github.com/ctripcorp/apollo/wiki/Quick-Start)
-
-公益演示环境（Demo）:
-- [140.143.100.23:8070](http://140.143.100.23:8070/)
-- 账号/密码:apollo/admin
 
 # Screenshots
 ![配置界面](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/apollo-home-screenshot.png)
@@ -230,3 +227,10 @@ The project is licensed under the [Apache 2 license](https://github.com/ctripcor
 ![中移物联网](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/known-users/zyiot.jpg) 
 ![易车网](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/known-users/biauto.png) 
 ![一药网](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/known-users/maiyaole.png) 
+![小影](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/known-users/xiaoying.png) 
+![彩贝壳](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/known-users/caibeike.png) 
+![YEELIGHT](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/known-users/yeelight.png) 
+![积目](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/known-users/itsgmu.png) 
+![极致医疗](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/known-users/acmedcare.png) 
+![金汇金融](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/known-users/jinhui365.png) 
+![久柏易游](https://raw.githubusercontent.com/ctripcorp/apollo/master/doc/images/known-users/900etrip.png) 
