@@ -1,6 +1,21 @@
 package com.ctrip.framework.apollo.internals;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Preconditions;
+
+import com.ctrip.framework.apollo.build.ApolloInjector;
+import com.ctrip.framework.apollo.core.ConfigConsts;
+import com.ctrip.framework.apollo.core.utils.ClassLoaderUtil;
 import com.ctrip.framework.apollo.enums.ConfigSourceType;
+import com.ctrip.framework.apollo.exceptions.ApolloConfigException;
+import com.ctrip.framework.apollo.tracer.Tracer;
+import com.ctrip.framework.apollo.tracer.spi.Transaction;
+import com.ctrip.framework.apollo.util.ConfigUtil;
+import com.ctrip.framework.apollo.util.ExceptionUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,20 +26,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.ctrip.framework.apollo.build.ApolloInjector;
-import com.ctrip.framework.apollo.core.ConfigConsts;
-import com.ctrip.framework.apollo.core.utils.ClassLoaderUtil;
-import com.ctrip.framework.apollo.exceptions.ApolloConfigException;
-import com.ctrip.framework.apollo.tracer.Tracer;
-import com.ctrip.framework.apollo.tracer.spi.Transaction;
-import com.ctrip.framework.apollo.util.ConfigUtil;
-import com.ctrip.framework.apollo.util.ExceptionUtil;
-import com.google.common.base.Joiner;
-import com.google.common.base.Preconditions;
 
 /**
  * @author Jason Song(song_s@ctrip.com)
@@ -277,7 +278,7 @@ public class LocalFileConfigRepository extends AbstractConfigRepository
   File assembleLocalCacheFile(File baseDir, String namespace) {
     String fileName =
         String.format("%s.properties", Joiner.on(ConfigConsts.CLUSTER_NAMESPACE_SEPARATOR)
-            .join(m_configUtil.getAppId(), m_configUtil.getCluster(), namespace));
+            .join(m_configUtil.getAppId(),m_configUtil.getApolloEnv().name(), m_configUtil.getCluster(), namespace));
     return new File(baseDir, fileName);
   }
 }
